@@ -1,0 +1,689 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E8A16FD2-E7E1-4438-8122-DA3965DBDC9C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DemoAuthentication.Web</RootNamespace>
+    <AssemblyName>DemoAuthentication.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44310</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.Abstractions, Version=6.31.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Abstractions.6.31.0\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.31.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.6.31.0\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.31.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.31.0\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.31.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.31.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.2.2\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.2.2\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.2.2\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Jwt, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Jwt.4.2.2\lib\net45\Microsoft.Owin.Security.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.2.2\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.31.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.31.0\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.5.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.7.2\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.4.7.2\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.9\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.9\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.9\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
+    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\DataController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="angular\.gitignore" />
+    <Content Include="angular\dist\angular\3rdpartylicenses.txt" />
+    <Content Include="angular\dist\angular\favicon.ico" />
+    <Content Include="angular\dist\angular\index.html" />
+    <Content Include="angular\dist\angular\main.29a307cacdc9e431.js" />
+    <Content Include="angular\dist\angular\polyfills.f91c42a6e04e503c.js" />
+    <Content Include="angular\dist\angular\runtime.f3cc930729914d15.js" />
+    <Content Include="angular\dist\angular\styles.ef46db3751d8e999.css" />
+    <Content Include="angular\src\app\app.component.css" />
+    <Content Include="angular\src\app\app.component.html" />
+    <Content Include="angular\src\favicon.ico" />
+    <Content Include="angular\src\index.html" />
+    <Content Include="angular\src\styles.css" />
+    <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\HelpPage\Views\Web.config" />
+    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="angular\.angular\cache\15.2.8\angular-webpack\93389f3ff364c1f68531e8b88799a6ddd10ae97e\0.pack" />
+    <Content Include="angular\.angular\cache\15.2.8\angular-webpack\93389f3ff364c1f68531e8b88799a6ddd10ae97e\index.pack" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\01aaaa29d4a2960bd6d332236f8d2af89a69d39f03d5dc7d56398df705f9fe42.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\0360fe3e9522a1494688a81f0dc7eaab95338f536a91d923f454b7b629046e71.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\04b67d3043885b3614be67733342614e44c7d3b7154916fda9f89913d8b3b94d.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\059dba8006177c829114f72f94a8261847fca3b5f05c84eba1d5f047ec5a3037.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\06e279d13228f94f77ae266fba0ed8790d80fda4316187a74dd2b8e1b540391f.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\07c535a069b084d6bd6abb2eebdbb8937d87729f3b79a08914b2a07149d2f6eb.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\09ab17c1bb5b60febeb2b23dcab160c8d3f3b7df40c81192a23b69692b9c347b.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\0b0b8ef67d476b056d4b64775e59d9aeaf107dfaee34a5f05a5707dfb40ede15.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\0d894ac2690a6824875564402ccf8b8c0e5ce1e0a306a915779ffae0d050cdf8.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\0f9b0b18e6d856dbe9bbbd6384f8d205811a8521e237f637c9abfbe72e90d196.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\11051194055c68c77cda1217fb582c3cc29d330a44983939056cd292c06b01b4.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\113e56c69b481ef5758e1f38cc1c9fb0bcb8a215c3c5ac31a3bbb101b238b900.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\1210ec0fc2ceca983d59f4f52bf0e28ee3f6a4f88b8cc2711ba18083dcc87a58.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\124a0995f7e5679eb61e055593ecbcf4b62d099dac45b07192d24129443de500.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\13365eb36db97d971b43312f2c229c0f9e4793bcd2e3dfb86ff172da6379c7e5.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\17443ba345f4a57ebe41d306571a7726e16de9bf4197163480a3ee25a6497188.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\176d378d5d99254c2df3c384c4fa2475e3a1829de641d2cb9bb60abe618b6403.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\18db59e0df388d31f65114401a3143115b276ac5af23edc5d3a009684def2f04.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\195d2d59ff2a9cffa08d31458c3ac2af469ca8ce98d9c4adc4bafcbc46401a37.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\19dcc6750120275600a7cf102f3eacbcbda70d44a206f6ed6cc37d1c5da48e74.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\1bc547901bc68617b41f97930abe7662a7f5e60fe4d8a0a19a855307b65e80c0.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\1d67e8cf8f28e8183bc3ee4062e6062a76a81474b55d7cf2443b50d54d2f4bcf.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\1d806276c62afd91a60479bfa80aa6ceff92bfd4f69c09c5ad96929dc2c4043c.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\1e28f3fb72e6c5a888d7af1a7104b74b8e8cf6586cae102d92b4547253a0a5f9.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\221e4fd1d562fb79ff038df133f2ed791c5cd40360ad5fb409e90f3caa4f3771.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\22c5af0f394ed7f998824f23570098d83dfb5b3b53d72264a5611ef384975c8e.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\236635c116c8535b14a1af773c24c25c3dbe150c9e16389b9eaa89f616a81845.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\24b2961586887b6c33a57eb825c4a46d3241d063a9359720dfc8676384119cda.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\251e04190840c078a37d9e039fda18006c53465e7e3297977fb5bc80a2952007.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\2596571d5dacc6bea1b67410f46cf50da1a500ebb3928f5041483f6d9762c9cf.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\2a76e8dd492e24461efb46c8e8f781d6612fd0bfaadfa251e290f86a0cd3d57c.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\2ab9a90afec458b241f3c33051fe06496e7d861fd8cb141e833096f07777a8db.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\2cd3c8a2965997eefcdafc930043c705422aa038d02ca825e806f3927f471909.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\2d260da5ec4f19a26e4a363daf56c9c2a52172af2f6bc8163562a068d4459c27.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\2ea36989bcbe82d3e1c18b582a5700db96c8cce6f01ff5d012fe7b0cffcd9bf1.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\2f013446b44ce9363917e15657b9f32c935f443099cc5126f7c54bd6d9186500.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\2f6e17e299f6eda5d63c3b6b473bbd6216a7f3c45ebf399beb875ea1b64742e0.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\3050da0b99e8f8f01833de1c9adb334389c8dc565d71da979ce70ac397c523fc.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\308bd783c5fdf29c0e2d92a4c2b6ce478c614bba45eac170cfdf6141da87d3a3.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\30ddb0e4a182d689c41ec74f9cf19ac197a976e8b8aee3ade3f4b7bfd6ee1972.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\32646fa9dfb5c587524596fc8273922e7782a26e512b060d4d9d1b518ef28329.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\32d441761d9304510469a0c9c27af80d7720337fb8c241b485dcfb951d5a10ad.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\3482dc77dfd43dc6404883bf95ef6ccdd75655bd9bb3e159dcdb089391ddc416.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\348b8f3baa01a7f3923fbf5ba0f65948050eed71fc5d59854a163bfee7ba2fd5.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\35060239f94c7fc9e3c36899f43cf530bfe342576e56c7acf4b4c5500d1892de.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\382f2353f7aa2faa1d9ab78a669f400b48bd952b5be1dcda2acdf66b0a16e655.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\3895d4740f07db7f020923143fa2b98e4f78f2e8b64ee414aad9a5778d062ef1.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\39dcfb1868c1d8ab201fd07384a6ef48dd6d3ff67542d817ca208b4ee7b4e612.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\3a43cf827635a98b2495d9401b631ef01113db1da6abc7c6e021b5124b143574.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\3adcbc5f2337553aff1658087159c6a7c186b6c072d800743311ea99cf0ed651.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\3c50a93ded3ce3616223ec52774efe0e13def11b0efe4bbddedc954627edde3d.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\3ccc6dd9a100b015062c3c827148ba1fb45aa57d7754195705d175c8a9f28d96.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\3da608aff3c0bf2ed714792f8b969643831374668fe6a6809a8d02299a10052c.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\3e253f406e5441df0192428337b9074712dda52e53203726edd97446867fb8fc.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\3f975cc9bfee127601e61f97ee95bf1803f3cfff29b1f45eac801aceb561c914.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\41735f262bd5dc85da3008fc688bd0f4cd254a28b89f71bcc0837291c1ffd06b.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\41c15ee744325a81ad6aa1a35808e57da51cf265579ca4fd66adba9bfd09037b.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\4245b2b9b610ce9de54a30ba2171fc50f9de9e1e4d0fc2c41e6a80f7e387c6e2.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\427a596c334c16fa1581786cbf3a64d1d4c6c6da31805aac44d00124e2070343.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\43846bf7bc45a9a539e4fd2fced99fb6b0ba5f07e9b61d46bb78c14846577eff.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\440a1d145a2e7db975af6ff42cc7199a975f44907a20f0dd566abd644e1e2d39.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\450e5118eca26e7c8b4770c3753712e8a8a3243f91b78dac3c5ed7c8c058c9c1.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\45931cf127edfafa6c17550353c77f2696ede4ef2f8cce9bdc7bebdcec0d212b.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\46eb09d691fa118e542ae2cc3fc3cdab77acacd312143d9cc57837276893c3fa.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\4760a4574c4462fbd8d69816f4060bfc6891d1d82f1ff01a62e06713895921d9.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\48d93b0521b2f53583840c59df62281a6908b79337667875c93fbf429e8042fd.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\4a10181503b46e1c0a862ed105f615ccb99994ac5b1eb5873224214d83edeb0f.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\4adfe7e177c613ef694a9dfa21105ddd8fbddfd1bb48d280c03ff858c32b81b7.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\4d31f6e551fcccc892dfdedcb0488f953e516e7ded974dae0ad20e0018782386.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\4e080ac458eda60c8ccd397db7cbe1ca1fcf285bcb05904fd12d15bd908677d3.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\4e10a920f43771f84e1901de7989c8a8c48b770f7a11ff15b473ce4f703d6372.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\4e5739f03bd39056442289c370d72936ef4dadc6e950e5375e9181440a365222.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\4ef398094631a158e7292f50af3af90087b79f93d6d7f360f437ed5be6775074.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\51b785264cee0be7f3282344d19f677eb181395de222f38ca4ff9d9e9a9e0748.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\5291398319fd3a856a7ef72ec260e88ff35f91fea575b71124cedebe55cd0883.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\53c23b0c07977fd2b35afa5384d2cb77bdc16156915d4e1ac9f93d08dd73015e.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\54570d11c544134659c9997faed02e1fe800f05e80408fd8ec911b88fdf761d8.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\548260b9ce6a1aa45b78152639c5e68d2ecb82615d31643ad7ff4a47db3c3b54.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\55b78b7bcbc2543699b03484b1958c309aa67ba87c0044a91c30c584a116c433.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\5659cb0a4843978b7716d7d7806a60a063dde6494992ed3b66e04b028f2deda2.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\5868bbbfdb2fc6a7396ca1714d0c641ed7bf48a2037ebde73ce4bcf8f9e330ed.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\5a5e22c4d694791a8513ca4b8ad0c85b2945d69d98ec165c3e52eabe1c46e63d.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\5b4433d1bbfa65aa30a3b2fab1f8fecd69772f71e410955df7ba5ac4f9b4f556.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\5c28fc8900191f31dcae29d7b299faa0646832fa6c3ecfae660cba135c755972.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\5d779cb8f773fe94610082b0cc278380d1ab17616c12d9dd9a92e111ace5a28e.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\5e514448b19513462526845129cedc612efc27f31086831e58ce64e4c63090c7.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\5f043e6b341b80d1d63a0c6c5f283f9267bcbae90670a4cae32c247eab9baad2.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\5f3cb07a58085d5b1d2f023f859b1040d733199a384141db1fb4a04c150f4286.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\5fd9799acf16f5bb7c1c2ddda563881f33ed7df6a15321cc9c5f1eb0b64b075b.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\627a19fc3d3e1f82e4fead0c051f2f739156538672403cd3e7efb8e5a1d2712f.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\62bcb6863dfd99500d89c2f113de93e438117453694ccfd119bb6b0646f78f4d.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\62d52d7b31860cd6a0b583409bc8f461c9850d8f5542d1d99a218f16a599d0d6.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\6666986e3a039150846e8c841d5b23638566138fb66791e8a92557fe3df30444.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\66be0cc1e43d2444417d925f4c1006eed05991518ed7ef79b0904247f942d95a.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\670dda3bc17b71a97b245d1f5e745fd75a0bf1e7825047d235e27e424b67e4f3.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\677cbe21dd4afb3496226083ed40b14cea7df025ab15a5335c04d79fc22bbb8b.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\6dbb37b45fa3db9efe33876359631da72c8d93f144f4925549b67f90e5913dfc.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\6e76391f8e6eb7e8a75bd11048a66d4ab71eab3a49698e823b37edf322246e65.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\6f803988229d81b9bce7af4702010bdb5392cadd8479622223ca216060f05ec3.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\700a5d51cc196405af10f1c3f3698a29438765ce5f67f3f05c1790fb13298f61.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\716bc23d6541995b21d49c02df814630ab3691540004f185ea1529e2ba2e87ac.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\71d54297ff9445c19d7fe9746c41329748f8864d1b9c19f3d333eacdb63d42bf.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\73c8e4cbcbc66e53de9d59b60b0fe4d3435fac260564de79743d3c659604e37d.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\744af48a14e5997b574a5c41864319b88d93ca28d8fd3030ea556af5e8e44b54.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\7816041edc459aba263f9aac655f55663a1e8e43cd8eccfa644ad889490beac7.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\787feee576de423b031415440beeb0d48b69fe59e15f3c73dfb8b6b8be98a95d.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\7998c2f10fc0ce04923f4dc8a92fecec720d8201fd7a46826d6fe473897f751d.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\8294681ed0581532a20d1f09f1b99e07f6598d93ad940b405fd5a4c759a2e0f7.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\82f8fb00d15f76da8c2cad083646727da88ac3ab11a45c77f0dbdc746ecdc929.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\8357b849595b57d350d9fe89338437251038e8d155a3472b42ead34b055a999b.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\851e7bd944194671c3b49b02f486fa75d8ad84e8d0a8d39d8261d4a104e17b63.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\85a684380137c3db3928e19ff4b309d1cad249bbb9b02e6f9635695f5f27153f.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\883c3c9cb9d9ed4a7604a9dd55251dcb4f3421f521152a1b359a04866bd9f0e4.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\8ab8da62b320548d2a6815beceadd4e13c113db10ac4c396da6ba5dc907cb3dd.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\8ad47f7e8d5b80f4d0d7408e8dfe9b0b41c48f0be119ba8b23e1229c7382977e.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\8b5b188d57da6ffaf03eec8e34ed7331d8fbf4c8363694adbf26e6b3a139bb27.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\8d1b87296dbd818625283c09432f855e6113944078672e304126b74bcc9a56c0.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\8e047c3d26e61568cdb5b7e5e056e2bff3f808bfde79fb090fbefda8690201cc.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\8fc2d796f15608c9013aff6e9da668de720194fae167c705d728b1103a741934.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\9209e7b91d9ee91bc3787087402966ca7d888cd3ad5c88e5d04a263f2c18c5db.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\922779edfda7d013cab3690bb9e4095eee8817907df79bcb7b73613dadd25a4f.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\93186fb1c7be2ed62c171522378adc984274bb7b17c2de7551de076943216db8.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\94e19e4bcdb577301425466821b325d693b8948d99dc0f43dd28cca1af5e8aed.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\94fc73b55c4ee3c88f6dfc03f165eb5b4db4e20775b0c5a7af65f41c12f91c2a.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\951edecd87dedd087c6e3c272de588fa09327997366f382261d07f5ad8343960.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\962764b5c2c2429bd51e4a74348fac28f9e01d6491cd9c48b031a4e15a401a55.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\968471ea4073b57b655e67c72d2301f2096f9b7b7fc982e3ac1b306c10a18d5b.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\97b3d8cb02d593cae22d2fa1899761cf507767dca54670c530a612ed995d75ee.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\97bcbc5271217fa4dbed04a784dc0b66727ce153a0f2afe1e4a6cc6e06e7ca04.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\9824032bcf9bf5afccf769c6e917a0b00784924db877279dbcb1a0c8beb6d7d9.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\98fbae95fb0abb951db0550be543d9ed86b909dc46d33a4bd4471f00ed7af30d.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\99d1bf2e0cdab09d768f65245e4d5d181c1446aad75a0b48ba1ace02885b3502.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\9bc5a153ba8941d1df91787251f7d1c309133c45897d349e2f00874ca373f6e2.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\9d37cd6200b436e01d8272dd755f23881502a98e4afb1e250d8f36657efb065c.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\9e54d56eabae79a49666570a5a8aeaf98f130637db1b2d4394ae32bd7cf56065.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\9e5a1862d6c55126fdf2254ce2353a78b66b460e4ffbab3d81bd71c1cf564fbe.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\9fbaaed72bfe89faf20265097e05fe076e7628e01ba4749f05ac775924fe0116.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\a20b79660f646e9e973353d87b14517c749fe25c14b86b1a61a70a6d1a7d7a9f.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\a24c9f7e447be629fad4f1b2fab127187f21190328a8cdbebf4d57202e1b2632.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\a2a29da8c1189a193ddba19c35c0741cbd7a708bc536c52d9b1f25bbd46a5a13.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\a3522ad66a9188109cfd51fc20a8fcf0005f2980162c247f2dd140100f3cda63.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\a3d4d594d276f298d25cbc43a2115cfcfda0bcf8821a4b6a8e18d6bdbd65b0e3.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\a3fb0fc50ebfe8d03e0e935a678b54638d10aec78a71088ba62b45931bcaec31.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\a502e18d9e01ba170dad34749b14d4389b54e2767d377d1f3b32b14f538923f7.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\a5617c3ec3e0f8cdb63467aff07c600fa29a114b48aeb839133613b8879bc1b6.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\a65ed3a8ba9e4fd6589ad5a32d6c42bae5926e7650b6b95094c0084f97f06ce7.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\a68069f6a9ea0200495f99f9a12e97853b34280aba67c8dc537ad23284381925.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\a935581e5bc363564c209adeceaa67b31de6bb595ba1fc99d50947da3b4fde85.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\a9ea3e0c17057c3017b46505252c6c2f21069c858ebb207593a8b81d6662a1ac.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\a9ee33d5971db749f8ad7f54951aac8f6c563d273b8a9122886d3aa4abf97476.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\aa1dd22c0ef0e6a7df4709fd0aba69765ee18d343f5024a0e81a1fc548e538fc.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\abd4e8a33996766578872558782b5e48ba4fb469d0fbc4c810160d4f83823463.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\ac3ffd66b19cdd55dcc5248383ed1f9bdb2f88469b3b967312ddd67b8d914501.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\ad8632229451cf02601b8d39ba56ae9a25b5d5b7af407494baee0470ed259a8b.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\add6340bf54002a58aeb3063ee2afd2368ef59c6462ae949ecf178b0ac4d174c.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\b025480334cb50ab825126b30205da43238b9ce9fe6fffd8fe2330e78f216bff.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\b180385020bece72537f4086e11a3a5c626c572fc94131e47703d4e9c868bbab.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\b238b5220176842ce05be7734a46a653edb546f81f03818a1e1cea62ca2fcdee.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\b3d21cc2de1ff3a0038c9b3a7476062c16cbec14e2c280666ef052c179157db8.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\b45d5659dfedbc08e2793d2ba83d5c9a6214da879618652f2cf0bf4b9ba16a89.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\b647d3cf1803210df4dd9563a675ef1bc27718495df1127dce48790f2e09a81d.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\b6ad70ce2506e97a255ad1a6178878ff8e6d520bd90cb1c97a6e7b8f2a4da111.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\b73d685bc3bc6e0de6f63e164d5a7d71af61541bc651a22db8191c6021a653c1.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\b74d02ba1dc7e1ac11ea5290d4dde2006902bb5be272c5033d39b19b6acc2e3e.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\b78377154f6064a7d8d716ccf63b06283cd25d8179b08859c1b4010abca0c8a4.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\b8b7940408d6058edc811b09aecbfaa9ec898967f38aab3eb1d46a13218d07f1.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\bf47e666f7ed4ebc435351386f5cc88d2334e662a6c143c3b29ca9b1a7f8bacf.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\c136ffd43de74e1550fd4e7a0e469830192c06e6a4f475806f95d026a8f00616.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\c138e3b08ae4fa8b2b7cd4ac350bc039c24ba3b5cd92644ac467fbbf3b8ece62.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\c1c601249052d59e988f58daefec7d9b10db877b8ed1fc8d9b1fed166ad3e380.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\c38314fa9f94fe1da773ec834a1e0f98ff467a4c201e07f48797fa11b155466d.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\c4a050c750569aacd60b4a1917f7d3fb5f7649662c83f2eae852225b2a548da1.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\c52b90a830ec0f1daca76187d50ce9ef2ce8c2f93420b413c749f52b5d01636d.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\c572925ff5a9aaf84e17b69649e857eb6d3c904afb3455a690b9fbc54319a284.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\c593468e777a7c5f2ab133ccdc087fe65abab6f08002e7952fc907fee6be1458.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\c62e73ced1043ac50146c8974141fd54ac4d8649e83e702db95b38a6d216483d.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\c6ee39ff371dadc7b976c649b368012e7b8a057e91426b50c2b7d5e1ccde69a4.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\c8f1cfd4504f1e8601ea168d545b496506af6b7872c51f73860709b387bc5735.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\c93350c061af80958c48b6f3f5e9c8bdc20a5c7d1b26d534552fee6774b4afd1.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\cbafd385aace2c5b412cd73e01f522f7ab5fe4cac86565dc1e6bc0d79ca02b48.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\ccf44f17f0639e953bcf1c512c1a12d7f31d7cb37202b337390a4d59a2b4b7e0.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\cdd6ffe070664b1883ed80368923d9fbbbabc4df9e00bb1c2333046701d33bf0.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\cf1feee8443f4a80a66915bdafee4f99185f931dd7aedb132b8e37f64950f444.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\cf640fa8d327e5cddd3cf9431ed596da875368f7735ec376a4b4c17e0e584508.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\cf813c6d0f1a2e0baffdd58a2e868e4a8a9624dd3521dbd9a888d25e002b756a.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\d0a1a09fb679b1da8c2beafe385a615339d77b853e06197404952a067224901c.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\d176ed97426d597296b77ca6ead603bfd977318dd33e1720a6f9a2875386dff6.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\d1dae4db13fc89801501d9b907da51358c57a14a426fef152dea5ab282f3966f.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\d2f62d06907f3787a1256295391be589d8b2b4c9eb183b8572720f55f7a6f742.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\d335e161809007ec58b641f9a01814b1ff36c4e509c272ef81bb326da94f410b.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\d4cdc373316e50be20e96272b59545379e7d99e4d62b4fe2d5e07b19c13fbb1b.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\d5f015616a022017072169276ad53adcdc1727cb3a0dcda45d61c5348a1cb476.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\d675b7e8e971fc9c421a75792bca20de2dd1bc327e6d393c64e99d1b2348f714.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\d6eddd79af8e4f67338792c42e13b222379db87b1dbf24a21f47284ec8ac7d46.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\d73184eb2f26dd118f4659ed43ad59913c726d021faa4f6576cec937135ea3ea.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\d7d9e0f6af29e0f9103ef5d4d5ad661bbf0ff3942ed47654f25141d71b95163a.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\d8c60aba0390aa1c490bccdfaa73b263d1bca648a44c44fd49f5906edd72b574.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\d94add10e8b33bbcb38668ef6234c83cb39c539f7d640fdc4bb34d97e203aaa5.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\dacd001fbb74615a4587535f38b07c99d1e79b2df5713efe02d79a9c537eda1a.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\db51746af7a9f464be67f0aef72a9d5a4425fa2fdf0d8287bec9599824cb70bd.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\db8b5dec6c87e2ed8527372a60d4aa2e67676fd813b9b2b6027741c04f793589.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\db8cf95fbff6e1b5da9b59e5aa9006e0dcfe323c63a35da559d36668c09738f9.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\df0be34ad91bd29704b4fe96ec1f49ee7de117b3af751e374d5fce3b2686e23e.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\dfe1349a4a993ebe640703f8afcb1c0e019cc808611d61b48a825607a535cc50.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\e248ad5105f028eb394f6b4e14b2aeacaf49c861495f8de1cd01981d549c6841.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\e2c0ad72657210bdc7279215f53ede81b569da2235e8c152c51983d717cb404f.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\e34b3e105cd845c49def01c0a4e5da956237caa4b9397a3e12d23da45d89b284.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\e43e1e310dab53e1e5bf3103bebd3538a11955b3c526be2895a6025942306881.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\e6439d637dffec79c3b1ff379e6fa5bd0b3107fbe9c48c836032e0b49126b801.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\e6c9c5c7db9faf311d52881e06d1b014c34028b1d167f9a9826a9e896ea3a1a4.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\e96b3d6d5e5956c1727ac11950aca820a96b26cf2637a8890b0f020f6d79dc37.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\ea12677e11fbec4ca4593c60e4484a934ab7a96480cc34341207eb2e56d08b14.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\ea1c57402a34f0d91c900c5100fe863fb3780247ebe79fbd88d8f6d7fe6e5dbf.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\ea4d8dca6bdfc3fc3172048d44bf9eece3306804dc6ed9bcb28886decbfe6b8e.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\eab9508d4ce4db103489ee2edd2b3d80f8807bc032ba28a4ed67f0e32e67f323.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\eb4587f9be946dc8eaae6dce7457029480681d93854dcd4c247dad74e0fde5e3.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\ebc5324900064068828f529ab3e07f85cfe41bf1a8c8651537c7baa1f072a0ac.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\ec4830ab2822680c2d581beee4b5b74b0562e71adef1ad3ed0b37e9fe7968324.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\ec9bb1703ffe319cd154c03a9737852dc6fa4ddffddb8e345557197173b9e740.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\ecdbdbe1cb06e290102eb02da3004b1820abf2ec5f118c91c6613214f96fe839.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\ed14e5ecb313fb8d84928d3b08c2496173baa23bc536c7661365f047c9d0e2bf.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\ee8e1aa851d6b882af6f9203d601499886936e331b621181a716e9485262de46.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\eede486410eb211c796a63d4c79eae4611087c69a3fb1db1f37c232b6b232604.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\efe9d202899eed9f0c6906f1323267fb632a2efacc5e8254e31f11963c4ece22.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\f062bf0698a15ff21349460e34ec33d8b9b2916a8b9fc9a3b5924dd5122a076f.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\f234645921e19e4254c452e3d3a041e5adccad3d21d392b43efd21c81c30dd2a.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\f271f4e0c7afc030a441346cf46bb07a19f11ae55b399172d1cba686fb06bd4b.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\f2ce093c35db9de3292ee268ecb80779f5ed9f47869f5fa2111de158e26dc36b.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\f36ca3d64340ec882023fd057b3ee768dc475220d08b41c8483fba3ff0a78d38.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\f51be32c204c7a9b6094beb19c750c7c271c39869636d54531028d5973417d56.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\f5eab615299756568ba23056ab4d2724f3014e3d25d2d34b0bbcd795c60b55ca.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\f5f6572ee046d677246c8ae02edc265e5fbc06353d5761c0f6690783fb097c8e.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\f676818f4da94dc2bed503bfdb12f9788ee43936a842dad751258399115babe2.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\f965c6bd5b673b9b5e344dfae783f00ba6945e13791a5135592c61ea1905131f.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\f9ef2a906e10c7b2c457355a2f91fc524c91b11242f952663ba650fae00f6723.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\fcab9b3650c4e863b4d97271f22d6c85df01740340118eddedbd7f364e9e618f.json" />
+    <Content Include="angular\.angular\cache\15.2.8\babel-webpack\ff4783e577f3fd5cb1e3061a97cedbd806f6f516d137b050912abe0a0413e143.json" />
+    <Content Include="angular\.vscode\extensions.json" />
+    <Content Include="angular\.vscode\launch.json" />
+    <Content Include="angular\.vscode\tasks.json" />
+    <Content Include="angular\src\assets\.gitkeep" />
+    <Content Include="angular\.editorconfig" />
+    <Content Include="angular\angular.json" />
+    <Content Include="angular\package.json" />
+    <Content Include="angular\tsconfig.app.json" />
+    <Content Include="angular\tsconfig.json" />
+    <Content Include="angular\tsconfig.spec.json" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\bootstrap.min.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\bootstrap.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.rtl.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-utilities.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-reboot.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="angular\src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="angular\src\app\app.component.spec.ts" />
+    <TypeScriptCompile Include="angular\src\app\app.component.ts" />
+    <TypeScriptCompile Include="angular\src\app\app.module.ts" />
+    <TypeScriptCompile Include="angular\src\main.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>9524</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44310/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
